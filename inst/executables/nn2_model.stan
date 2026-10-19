@@ -21,7 +21,7 @@ data {
   int incl_DN;
 
   // Data
-  real data_obj[nobs, ncol];
+  array[nobs, ncol] real data_obj;
 
   // For models 0 data_obj is the following
   // -- Column 1 = tempup (celcius)

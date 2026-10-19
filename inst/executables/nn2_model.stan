@@ -21,7 +21,7 @@ data {
   int incl_DN;
 
   // Data
-  real data_obj[nobs, ncol];
+  array[nobs, ncol] real data_obj;
 
   // For models 0 data_obj is the following
   // -- Column 1 = tempup (celcius)
@@ -50,7 +50,7 @@ data {
   real tt; // Travel time between stations
   int<lower = 0> lag; // Time lag (if mod < 3 it is 0)
 
-  real PPFD[nobs + lag]; // Photosynthetic photon flux density (PPFD/light) (mol m-2 s-1)
+  array[nobs + lag] real PPFD; // Photosynthetic photon flux density (PPFD/light) (mol m-2 s-1)
   real PPFDtotal; // Daily total of PPFD (mol m-2 s-1 d-1)
 
   // Prior specifications
@@ -67,7 +67,7 @@ parameters {
   // params[1] = K600 = Gas exchange rates (d-1)
   // params[2] = DN = Denitrification rate (g m-2 d-1)
   // params[3] = Nfix = N2 fixation rate (g m-2 d-1)
-  real params[nparam];
+  array[nparam] real params;
 
   real<lower=0> sigma; // Variance
 }
